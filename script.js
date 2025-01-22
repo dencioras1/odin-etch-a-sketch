@@ -1,15 +1,35 @@
 const inputGrid = document.getElementById(`gridSize`);
 const gridButton = document.getElementById(`gridButton`);
+const grid = document.getElementById(`grid`);
 
 let gridSize = 16;
 
+function generateGrid(size) {
+    let rows = document.createElement(`div`);
+
+    for (let i = 0; i < size; i++) {
+        let row = document.createElement(`div`);
+        row.className = `row`;
+        row.id = i;
+        for (let j = 0; j < size; j++) {
+            let cell = document.createElement(`div`);
+            cell.className = `cell`;
+            cell.id = j;
+            row.appendChild(cell);
+        }
+        rows.appendChild(row);
+    }
+    grid.appendChild(rows);
+}
+
 gridButton.addEventListener(`click`, () => {
-    let value = 0;
+    let sizeInput = 0;
 
     if (!isNaN(parseInt(inputGrid.value))) {
         if (parseInt(inputGrid.value) >= 16 && parseInt(inputGrid.value) <= 100) {
-            value = parseInt(inputGrid.value);
-            console.log(value);
+            sizeInput = parseInt(inputGrid.value);
+            console.log(sizeInput);
+            generateGrid(sizeInput);
             inputGrid.value = ``;
         }
         else {
@@ -22,6 +42,4 @@ gridButton.addEventListener(`click`, () => {
         alert(`Error! Input must a number between 16 and 100`);
     }
 
-    
-    
 });
