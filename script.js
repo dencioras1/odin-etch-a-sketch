@@ -1,11 +1,18 @@
 const inputGrid = document.getElementById(`gridSize`);
 const gridButton = document.getElementById(`gridButton`);
 const grid = document.getElementById(`grid`);
-
 let gridSize = 16;
 
+generateGrid(gridSize);
+
+function clearGrid() {
+    while (grid.firstChild) {
+        grid.removeChild(grid.firstChild);
+    }
+}
+
 function generateGrid(size) {
-    let rows = document.createElement(`div`);
+    clearGrid();
 
     for (let i = 0; i < size; i++) {
         let row = document.createElement(`div`);
@@ -17,9 +24,8 @@ function generateGrid(size) {
             cell.id = j;
             row.appendChild(cell);
         }
-        rows.appendChild(row);
+        grid.appendChild(row);
     }
-    grid.appendChild(rows);
 }
 
 gridButton.addEventListener(`click`, () => {
