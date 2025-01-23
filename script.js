@@ -28,6 +28,6 @@ function generateGrid(size) {
     }
 }
 
-gridSize.addEventListener(`click`, () => {
-
+gridSize.addEventListener(`mousedown`, function(e) {
+    console.log(e.target);
 });
