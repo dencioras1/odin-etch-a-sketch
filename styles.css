@@ -21,7 +21,6 @@ body {
 #grid {
     display: flex;
     flex-direction: column;
-    background-color: white;
     margin-right: 5vw;
     height: 80vh;
     width: 80vh;
@@ -31,7 +30,6 @@ body {
     display: flex;
     flex: 1;
     flex-direction: row;
-    background-color: white;
 }
 
 #grid > .row > .cell {
@@ -39,6 +37,5 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: red;
     border: 1px solid black;
 }

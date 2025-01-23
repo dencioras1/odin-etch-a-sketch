@@ -9,7 +9,6 @@ let isDrawing = false;
 
 generateGrid(defaultValue);
 gridSizeValue.textContent = `Size: ` + defaultValue + `x` + defaultValue;
-console.log(cells[0].style);
 
 function clearGrid() {
     while (grid.firstChild) {
@@ -34,9 +33,12 @@ function generateGrid(size) {
     }
 }
 
-function colorGrid(target, red, green, blue, alpha) {
+function colorCell(target, red, green, blue, alpha) {
     let targetColor = window.getComputedStyle(target).backgroundColor;
-    console.log(targetColor);
+    let newColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    console.log(`Target color: ` + targetColor);
+    console.log(`New color: ` + newColor);
+    target.style.backgroundColor = newColor;
 }
 
 gridSize.addEventListener(`mousedown`, (e) => {
@@ -53,7 +55,7 @@ gridSize.addEventListener(`mouseup`, (e) => {
 grid.addEventListener(`mousedown`, (e) => {
     isDrawing = true;
     console.log(e.target);
-    colorGrid(e.target, 0, 0, 0, 1);
+    colorCell(e.target, 50, 100, 220, 1);
 });
 
 grid.addEventListener(`mouseup`, () => {
