@@ -12,7 +12,10 @@ const blueValue = document.getElementById(`blueValue`);
 const alpha = document.getElementById(`alpha`);
 const alphaValue = document.getElementById(`alphaValue`);
 
+const clearButton = document.getElementById(`clear`);
+
 const defaultSize = 16;
+let currentSize = 16;
 
 let isDrawing = false;
 
@@ -61,6 +64,7 @@ gridSize.addEventListener(`mousedown`, (e) => {
 
 gridSize.addEventListener(`mouseup`, (e) => {
     generateGrid(e.target.value);
+    currentSize = e.target.value;
 });
 
 red.addEventListener(`mousedown`, (e) => {
@@ -105,4 +109,8 @@ grid.addEventListener(`mouseover`, (e) => {
     if (isDrawing) {
         colorCell(e.target, red.value, green.value, blue.value, alpha.value);
     }
+});
+
+clearButton.addEventListener(`click`, () => {
+    generateGrid(currentSize);
 });
