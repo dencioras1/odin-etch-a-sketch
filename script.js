@@ -29,23 +29,5 @@ function generateGrid(size) {
 }
 
 gridSize.addEventListener(`click`, () => {
-    let sizeInput = 0;
-
-    if (!isNaN(parseInt(inputGrid.value))) {
-        if (parseInt(inputGrid.value) >= 16 && parseInt(inputGrid.value) <= 100) {
-            sizeInput = parseInt(inputGrid.value);
-            console.log(sizeInput);
-            generateGrid(sizeInput);
-            inputGrid.value = ``;
-        }
-        else {
-            inputGrid.value = ``;
-            alert(`Error! Input must a number between 16 and 100`);
-        }
-    }
-    else {
-        inputGrid.value = ``;
-        alert(`Error! Input must a number between 16 and 100`);
-    }
 
 });
