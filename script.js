@@ -1,9 +1,11 @@
-const inputGrid = document.getElementById(`gridSize`);
-const gridButton = document.getElementById(`gridButton`);
 const grid = document.getElementById(`grid`);
-let gridSize = 16;
+const gridSize = document.getElementById(`gridSize`);
+const gridSizeValue = document.getElementById(`gridSizeValue`);
 
-generateGrid(gridSize);
+const defaultValue = 16;
+
+generateGrid(defaultValue);
+gridSizeValue.textContent = `Size: ` + defaultValue + `x` + defaultValue;
 
 function clearGrid() {
     while (grid.firstChild) {
@@ -28,6 +30,13 @@ function generateGrid(size) {
     }
 }
 
-gridSize.addEventListener(`mousedown`, function(e) {
-    console.log(e.target);
+gridSize.addEventListener(`mousedown`, (e) => {
+    gridSize.addEventListener(`mousemove`, () => {
+        console.log(e.target.value);
+        gridSizeValue.textContent = `Size: ` + e.target.value + `x` + e.target.value;
+    });
+});
+
+gridSize.addEventListener(`mouseup`, (e) => {
+    generateGrid(e.target.value);
 });
