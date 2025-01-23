@@ -28,7 +28,7 @@ function generateGrid(size) {
     }
 }
 
-gridButton.addEventListener(`click`, () => {
+gridSize.addEventListener(`click`, () => {
     let sizeInput = 0;
 
     if (!isNaN(parseInt(inputGrid.value))) {
