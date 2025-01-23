@@ -1,6 +1,7 @@
 const grid = document.getElementById(`grid`);
 const gridSize = document.getElementById(`gridSize`);
 const gridSizeValue = document.getElementById(`gridSizeValue`);
+const cells = document.getElementsByClassName(`cell`);
 
 const defaultValue = 16;
 
@@ -39,4 +40,8 @@ gridSize.addEventListener(`mousedown`, (e) => {
 
 gridSize.addEventListener(`mouseup`, (e) => {
     generateGrid(e.target.value);
+});
+
+grid.addEventListener('mouseover', (e) => {
+    console.log(e.target);
 });
