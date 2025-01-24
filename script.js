@@ -17,6 +17,14 @@ const alphaPencil = document.getElementById(`alphaPencil`);
 const alphaPencilValue = document.getElementById(`alphaPencilValue`);
 
 // Variables for the background color
+const redBackground = document.getElementById(`redBackground`);
+const redBackgroundValue = document.getElementById(`redBackgroundValue`);
+const greenBackground = document.getElementById(`greenBackground`);
+const greenBackgroundValue = document.getElementById(`greenBackgroundValue`);
+const blueBackground = document.getElementById(`blueBackground`);
+const blueBackgroundValue = document.getElementById(`blueBackgroundValue`);
+const alphaBackground = document.getElementById(`alphaBackground`);
+const alphaBackgroundValue = document.getElementById(`alphaBackgroundValue`);
 
 const clearButton = document.getElementById(`clear`);
 
@@ -24,11 +32,16 @@ let isDrawing = false;
 
 generateGrid(defaultSize);
 
-gridSizeValue.textContent = `Size: ` + defaultSize + `x` + defaultSize;
+// Initialize displayed values on the webpage
+gridSizeValue.textContent = defaultSize + `x` + defaultSize;
 redPencilValue.textContent = `Red: ` + 0;
 greenPencilValue.textContent = `Green: ` + 0;
 bluePencilValue.textContent = `Blue: ` + 0;
 alphaPencilValue.textContent = `Alpha: ` + 1;
+redBackgroundValue.textContent = `Red: ` + 255;
+greenBackgroundValue.textContent = `Green: ` + 255;
+blueBackgroundValue.textContent = `Blue: ` + 255;
+alphaBackgroundValue.textContent = `Alpha: ` + 1;
 
 function clearGrid() {
     while (grid.firstChild) {
@@ -51,6 +64,8 @@ function generateGrid(size) {
         }
         grid.appendChild(row);
     }
+    currentSize = size;
+    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
 }
 
 function colorCell(target, red, green, blue, alpha) {
@@ -58,10 +73,17 @@ function colorCell(target, red, green, blue, alpha) {
     target.style.backgroundColor = newColor;
 }
 
+function colorCells(red, green, blue, alpha) {
+    for (let i = 0; i < currentSize; i++) {
+        for (let j = 0; j < currentSize; j++) {
+            colorCell(cells[i * currentSize + j], red, green, blue, alpha);
+        }
+    }
+}
+
 gridSize.addEventListener(`mousedown`, (e) => {
     gridSize.addEventListener(`mousemove`, () => {
-        console.log(e.target.value);
-        gridSizeValue.textContent = `Size: ` + e.target.value + `x` + e.target.value;
+        gridSizeValue.textContent = e.target.value + `x` + e.target.value;
     });
 });
 
@@ -72,35 +94,70 @@ gridSize.addEventListener(`mouseup`, (e) => {
 
 redPencil.addEventListener(`mousedown`, (e) => {
     redPencil.addEventListener(`mousemove`, () => {
-        console.log(e.target.value);
         redPencilValue.textContent = `Red: ` + e.target.value;
     });
 });
 
 greenPencil.addEventListener(`mousedown`, (e) => {
     greenPencil.addEventListener(`mousemove`, () => {
-        console.log(e.target.value);
         greenPencilValue.textContent = `Green: ` + e.target.value;
     });
 });
 
 bluePencil.addEventListener(`mousedown`, (e) => {
     bluePencil.addEventListener(`mousemove`, () => {
-        console.log(e.target.value);
         bluePencilValue.textContent = `Blue: ` + e.target.value;
     });
 });
 
 alphaPencil.addEventListener(`mousedown`, (e) => {
     alphaPencil.addEventListener(`mousemove`, () => {
-        console.log(e.target.value);
         alphaPencilValue.textContent = `Alpha: ` + e.target.value;
     });
 });
 
+redBackground.addEventListener(`mousedown`, (e) => {
+    redBackground.addEventListener(`mousemove`, () => {
+        redBackgroundValue.textContent = `Red: ` + e.target.value;
+    });
+});
+
+greenBackground.addEventListener(`mousedown`, (e) => {
+    greenBackground.addEventListener(`mousemove`, () => {
+        greenBackgroundValue.textContent = `Green: ` + e.target.value;
+    });
+});
+
+blueBackground.addEventListener(`mousedown`, (e) => {
+    blueBackground.addEventListener(`mousemove`, () => {
+        blueBackgroundValue.textContent = `Blue: ` + e.target.value;
+    });
+});
+
+alphaBackground.addEventListener(`mousedown`, (e) => {
+    alphaBackground.addEventListener(`mousemove`, () => {
+        alphaBackgroundValue.textContent = `Alpha: ` + e.target.value;
+    });
+});
+
+redBackground.addEventListener(`mouseup`, () => {
+    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+});
+
+greenBackground.addEventListener(`mouseup`, () => {
+    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+});
+
+blueBackground.addEventListener(`mouseup`, () => {
+    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+});
+
+alphaBackground.addEventListener(`mouseup`, () => {
+    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+});
+
 grid.addEventListener(`mousedown`, (e) => {
     isDrawing = true;
-    console.log(e.target);
     colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, alphaPencil.value);
 });
 
