@@ -1,31 +1,34 @@
+// Variables for the grid, and related stuff
 const grid = document.getElementById(`grid`);
 const gridSize = document.getElementById(`gridSize`);
 const gridSizeValue = document.getElementById(`gridSizeValue`);
 const cells = document.getElementsByClassName(`cell`);
-
-const red = document.getElementById(`red`);
-const redValue = document.getElementById(`redValue`);
-const green = document.getElementById(`green`);
-const greenValue = document.getElementById(`greenValue`);
-const blue = document.getElementById(`blue`);
-const blueValue = document.getElementById(`blueValue`);
-const alpha = document.getElementById(`alpha`);
-const alphaValue = document.getElementById(`alphaValue`);
-
-const clearButton = document.getElementById(`clear`);
-
 const defaultSize = 16;
 let currentSize = 16;
+
+// Variables for the RGB values of the pencil
+const redPencil = document.getElementById(`redPencil`);
+const redPencilValue = document.getElementById(`redPencilValue`);
+const greenPencil = document.getElementById(`greenPencil`);
+const greenPencilValue = document.getElementById(`greenPencilValue`);
+const bluePencil = document.getElementById(`bluePencil`);
+const bluePencilValue = document.getElementById(`bluePencilValue`);
+const alphaPencil = document.getElementById(`alphaPencil`);
+const alphaPencilValue = document.getElementById(`alphaPencilValue`);
+
+// Variables for the background color
+
+const clearButton = document.getElementById(`clear`);
 
 let isDrawing = false;
 
 generateGrid(defaultSize);
 
 gridSizeValue.textContent = `Size: ` + defaultSize + `x` + defaultSize;
-redValue.textContent = `Red: ` + 0;
-greenValue.textContent = `Green: ` + 0;
-blueValue.textContent = `Blue: ` + 0;
-alphaValue.textContent = `Alpha: ` + 1;
+redPencilValue.textContent = `Red: ` + 0;
+greenPencilValue.textContent = `Green: ` + 0;
+bluePencilValue.textContent = `Blue: ` + 0;
+alphaPencilValue.textContent = `Alpha: ` + 1;
 
 function clearGrid() {
     while (grid.firstChild) {
@@ -67,38 +70,38 @@ gridSize.addEventListener(`mouseup`, (e) => {
     currentSize = e.target.value;
 });
 
-red.addEventListener(`mousedown`, (e) => {
-    red.addEventListener(`mousemove`, () => {
+redPencil.addEventListener(`mousedown`, (e) => {
+    redPencil.addEventListener(`mousemove`, () => {
         console.log(e.target.value);
-        redValue.textContent = `Red: ` + e.target.value;
+        redPencilValue.textContent = `Red: ` + e.target.value;
     });
 });
 
-green.addEventListener(`mousedown`, (e) => {
-    green.addEventListener(`mousemove`, () => {
+greenPencil.addEventListener(`mousedown`, (e) => {
+    greenPencil.addEventListener(`mousemove`, () => {
         console.log(e.target.value);
-        greenValue.textContent = `Green: ` + e.target.value;
+        greenPencilValue.textContent = `Green: ` + e.target.value;
     });
 });
 
-blue.addEventListener(`mousedown`, (e) => {
-    blue.addEventListener(`mousemove`, () => {
+bluePencil.addEventListener(`mousedown`, (e) => {
+    bluePencil.addEventListener(`mousemove`, () => {
         console.log(e.target.value);
-        blueValue.textContent = `Blue: ` + e.target.value;
+        bluePencilValue.textContent = `Blue: ` + e.target.value;
     });
 });
 
-alpha.addEventListener(`mousedown`, (e) => {
-    alpha.addEventListener(`mousemove`, () => {
+alphaPencil.addEventListener(`mousedown`, (e) => {
+    alphaPencil.addEventListener(`mousemove`, () => {
         console.log(e.target.value);
-        alphaValue.textContent = `Alpha: ` + e.target.value;
+        alphaPencilValue.textContent = `Alpha: ` + e.target.value;
     });
 });
 
 grid.addEventListener(`mousedown`, (e) => {
     isDrawing = true;
     console.log(e.target);
-    colorCell(e.target, red.value, green.value, blue.value, alpha.value);
+    colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, alphaPencil.value);
 });
 
 grid.addEventListener(`mouseup`, () => {
@@ -107,7 +110,7 @@ grid.addEventListener(`mouseup`, () => {
 
 grid.addEventListener(`mouseover`, (e) => {
     if (isDrawing) {
-        colorCell(e.target, red.value, green.value, blue.value, alpha.value);
+        colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, alphaPencil.value);
     }
 });
 
