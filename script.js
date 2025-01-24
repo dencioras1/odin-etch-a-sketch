@@ -26,6 +26,11 @@ const blueBackgroundValue = document.getElementById(`blueBackgroundValue`);
 const alphaBackground = document.getElementById(`alphaBackground`);
 const alphaBackgroundValue = document.getElementById(`alphaBackgroundValue`);
 
+// Variable for the selected tools
+const pencil = document.getElementById();
+const brush = document.getElementById();
+const eraser = document.getElementById();
+
 const clearButton = document.getElementById(`clear`);
 
 let isDrawing = false;
