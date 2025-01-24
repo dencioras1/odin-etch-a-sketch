@@ -48,6 +48,10 @@ greenBackgroundValue.textContent = `Green: ` + 255;
 blueBackgroundValue.textContent = `Blue: ` + 255;
 alphaBackgroundValue.textContent = `Alpha: ` + 1;
 
+console.log(pencil.checked);
+console.log(brush.checked);
+console.log(eraser.checked);
+
 function clearGrid() {
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild);
@@ -178,4 +182,22 @@ grid.addEventListener(`mouseover`, (e) => {
 
 clearButton.addEventListener(`click`, () => {
     generateGrid(currentSize);
+});
+
+pencil.addEventListener(`click`, () => {
+    console.log(pencil.checked);
+    console.log(brush.checked);
+    console.log(eraser.checked);
+});
+
+brush.addEventListener(`click`, () => {
+    console.log(pencil.checked);
+    console.log(brush.checked);
+    console.log(eraser.checked);
+});
+
+eraser.addEventListener(`click`, () => {
+    console.log(pencil.checked);
+    console.log(brush.checked);
+    console.log(eraser.checked);
 });
