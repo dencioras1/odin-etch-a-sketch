@@ -1,6 +1,9 @@
 // Variable for entire space outside the grid
 const gridOutside = document.getElementById(`window`);
 
+// Variable for download button
+const downloadLink = document.getElementById(`download`);
+
 // Variables for the grid, and related stuff
 const grid = document.getElementById(`grid`);
 const gridSize = document.getElementById(`gridSize`);
@@ -88,9 +91,54 @@ function colorBackground(red, green, blue, alpha) {
 }
 
 function downloadGridImage() {
-    let image = document.createElement(`canvas`);
-    image.getContext(`2d`);
+    let backgroundCanvas = document.createElement(`canvas`);
+    let backgroundContext = backgroundCanvas.getContext(`2d`);
+    let drawingCanvas = document.createElement(`canvas`);
+    let drawingContext = drawingCanvas.getContext(`2d`);
+    let imageCanvas = document.createElement(`canvas`);
+    let imageContext = imageCanvas.getContext(`2d`);
+    let colorDraw;
+
+    backgroundCanvas.width = parseInt(currentSize);
+    backgroundCanvas.height = parseInt(currentSize);
+    drawingCanvas.width = parseInt(currentSize);
+    drawingCanvas.height = parseInt(currentSize);
+    imageCanvas.width = parseInt(currentSize);
+    imageCanvas.height = parseInt(currentSize);
+
+    backgroundContext.imageSmoothingEnabled = false;
+    drawingContext.imageSmoothingEnabled = false;
+    imageContext.imageSmoothingEnabled = false;
+
+    let backgroundColor = `rgba(${redBackground.value}, ${greenBackground.value}, ${blueBackground.value}, ${alphaBackground.value})`;
+    backgroundContext.fillStyle = backgroundColor;
+    backgroundContext.fillRect(0, 0, currentSize, currentSize);
+
+    drawingContext.fillStyle = `rgba(0, 0, 0, 0)`;
+    drawingContext.fillRect(0, 0, currentSize, currentSize);
+
+    for (let i = 0; i < currentSize; i++) {
+        for (let j = 0; j < currentSize; j++) {
+            colorDraw = cells[currentSize * i + j].style.backgroundColor;
+            drawingContext.fillStyle = colorDraw;
+            drawingContext.fillRect(j, i, 1, 1);
+            drawingContext.fillStyle = `rgba(0, 0, 0, 0)`;
+        }
+    }
+
+    imageContext.drawImage(backgroundCanvas, 0, 0);
+    imageContext.drawImage(drawingCanvas, 0, 0);
+    
+
+    const png = imageCanvas.toDataURL(`image/png`);
+    downloadLink.href = png;
+    console.log(png);
+    downloadLink.download = `Sketch-That-Was-Etched.png`;
 }
+
+download.addEventListener(`click`, () => {
+    downloadGridImage();
+});
 
 gridSize.addEventListener(`mousedown`, (e) => {
     gridSize.addEventListener(`mouseup`, () => {
