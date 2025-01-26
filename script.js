@@ -1,3 +1,6 @@
+// Variable for entire space outside the grid
+const gridOutside = document.getElementById(`window`);
+
 // Variables for the grid, and related stuff
 const grid = document.getElementById(`grid`);
 const gridSize = document.getElementById(`gridSize`);
@@ -85,6 +88,9 @@ function colorBackground(red, green, blue, alpha) {
 }
 
 gridSize.addEventListener(`mousedown`, (e) => {
+    gridSize.addEventListener(`mouseup`, () => {
+        gridSizeValue.textContent = e.target.value + `x` + e.target.value;
+    });
     gridSize.addEventListener(`mousemove`, () => {
         gridSizeValue.textContent = e.target.value + `x` + e.target.value;
     });
@@ -184,6 +190,7 @@ alphaBackground.addEventListener(`mouseup`, () => {
 });
 
 grid.addEventListener(`mousedown`, (e) => {
+    e.preventDefault();
     isDrawing = true;
 
     if (pencil.checked) {
@@ -240,14 +247,6 @@ clearButton.addEventListener(`click`, () => {
     generateGrid(currentSize);
 });
 
-pencil.addEventListener(`click`, () => {
-
-});
-
-brush.addEventListener(`click`, () => {
-
-});
-
-eraser.addEventListener(`click`, () => {
-
+gridOutside.addEventListener(`mouseup`, () => {
+    isDrawing = false;
 });
