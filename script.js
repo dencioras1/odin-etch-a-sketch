@@ -70,7 +70,7 @@ function generateGrid(size) {
         grid.appendChild(row);
     }
     currentSize = size;
-    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+    colorBackground(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
 }
 
 function colorCell(target, red, green, blue, alpha) {
@@ -78,12 +78,9 @@ function colorCell(target, red, green, blue, alpha) {
     target.style.backgroundColor = newColor;
 }
 
-function colorCells(red, green, blue, alpha) {
-    for (let i = 0; i < currentSize; i++) {
-        for (let j = 0; j < currentSize; j++) {
-            colorCell(cells[i * currentSize + j], red, green, blue, alpha);
-        }
-    }
+function colorBackground(red, green, blue, alpha) {
+    let newColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    grid.style.backgroundColor = newColor;
 }
 
 gridSize.addEventListener(`mousedown`, (e) => {
@@ -146,24 +143,42 @@ alphaBackground.addEventListener(`mousedown`, (e) => {
 });
 
 redBackground.addEventListener(`mouseup`, () => {
-    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+    colorBackground(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
 });
 
 greenBackground.addEventListener(`mouseup`, () => {
-    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+    colorBackground(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
 });
 
 blueBackground.addEventListener(`mouseup`, () => {
-    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+    colorBackground(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
 });
 
 alphaBackground.addEventListener(`mouseup`, () => {
-    colorCells(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+    colorBackground(redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
 });
 
 grid.addEventListener(`mousedown`, (e) => {
     isDrawing = true;
-    colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, alphaPencil.value);
+
+    if (pencil.checked) {
+        colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, alphaPencil.value);
+
+    }
+    if (brush.checked) {
+        let background = window.getComputedStyle(e.target).backgroundColor;
+        background = background.split(`,`);
+        console.log(background);
+
+        if (background[0].includes(`rgba`)) {
+            console.log(`Is RGBA`);
+        }
+
+        colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, e.target.alpha + 0.1);
+    }
+    if (eraser.checked) {
+        colorCell(e.target, redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+    }
 });
 
 grid.addEventListener(`mouseup`, () => {
@@ -171,8 +186,23 @@ grid.addEventListener(`mouseup`, () => {
 });
 
 grid.addEventListener(`mouseover`, (e) => {
-    if (isDrawing) {
+    if (isDrawing && pencil.checked) {
         colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, alphaPencil.value);
+
+    }
+    if (isDrawing && brush.checked) {
+        let background = window.getComputedStyle(e.target).backgroundColor;
+        background = background.split(`,`);
+        console.log(background);
+
+        if (background[0].includes(`rgba`)) {
+            console.log(`Is RGBA`);
+        }
+
+        colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, e.target.alpha + 0.1);
+    }
+    if (isDrawing && eraser.checked) {
+        colorCell(e.target, redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
     }
 });
 
