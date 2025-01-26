@@ -87,6 +87,11 @@ function colorBackground(red, green, blue, alpha) {
     grid.style.backgroundColor = newColor;
 }
 
+function downloadGridImage() {
+    let image = document.createElement(`canvas`);
+    image.getContext(`2d`);
+}
+
 gridSize.addEventListener(`mousedown`, (e) => {
     gridSize.addEventListener(`mouseup`, () => {
         gridSizeValue.textContent = e.target.value + `x` + e.target.value;
