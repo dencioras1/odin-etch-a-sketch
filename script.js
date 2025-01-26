@@ -163,21 +163,24 @@ grid.addEventListener(`mousedown`, (e) => {
 
     if (pencil.checked) {
         colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, alphaPencil.value);
-
     }
     if (brush.checked) {
-        let background = window.getComputedStyle(e.target).backgroundColor;
-        background = background.split(`,`);
-        console.log(background);
+        let temp = window.getComputedStyle(e.target).backgroundColor;
+        temp = temp.split(`,`);
+        console.log(temp);
 
-        if (background[0].includes(`rgba`)) {
+        if (temp[0].includes(`rgba`)) {
+            let alpha = temp[temp.length - 1];
+            alpha = alpha.slice(0, alpha.length - 1);
+            alpha.trim();
             console.log(`Is RGBA`);
+            console.log(alpha);
         }
 
         colorCell(e.target, redPencil.value, greenPencil.value, bluePencil.value, e.target.alpha + 0.1);
     }
     if (eraser.checked) {
-        colorCell(e.target, redBackground.value, greenBackground.value, blueBackground.value, alphaBackground.value);
+        colorCell(e.target, 0, 0, 0, 0);
     }
 });
 
