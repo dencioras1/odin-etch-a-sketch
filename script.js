@@ -96,48 +96,72 @@ gridSize.addEventListener(`mouseup`, (e) => {
 });
 
 redPencil.addEventListener(`mousedown`, (e) => {
+    redPencil.addEventListener(`mouseup`, () => {
+        redPencilValue.textContent = `Red: ` + e.target.value;
+    });
     redPencil.addEventListener(`mousemove`, () => {
         redPencilValue.textContent = `Red: ` + e.target.value;
     });
 });
 
 greenPencil.addEventListener(`mousedown`, (e) => {
+    greenPencil.addEventListener(`mouseup`, () => {
+        greenPencilValue.textContent = `Green: ` + e.target.value;
+    });
     greenPencil.addEventListener(`mousemove`, () => {
         greenPencilValue.textContent = `Green: ` + e.target.value;
     });
 });
 
 bluePencil.addEventListener(`mousedown`, (e) => {
+    bluePencil.addEventListener(`mouseup`, () => {
+        bluePencilValue.textContent = `Blue: ` + e.target.value;
+    });
     bluePencil.addEventListener(`mousemove`, () => {
         bluePencilValue.textContent = `Blue: ` + e.target.value;
     });
 });
 
 alphaPencil.addEventListener(`mousedown`, (e) => {
+    alphaPencil.addEventListener(`mouseup`, () => {
+        alphaPencilValue.textContent = `Alpha: ` + e.target.value;
+    });
     alphaPencil.addEventListener(`mousemove`, () => {
         alphaPencilValue.textContent = `Alpha: ` + e.target.value;
     });
 });
 
 redBackground.addEventListener(`mousedown`, (e) => {
+    redBackground.addEventListener(`mouseup`, () => {
+        redBackgroundValue.textContent = `Red: ` + e.target.value;
+    });
     redBackground.addEventListener(`mousemove`, () => {
         redBackgroundValue.textContent = `Red: ` + e.target.value;
     });
 });
 
 greenBackground.addEventListener(`mousedown`, (e) => {
+    greenBackground.addEventListener(`mouseup`, () => {
+        greenBackgroundValue.textContent = `Green: ` + e.target.value;
+    });
     greenBackground.addEventListener(`mousemove`, () => {
         greenBackgroundValue.textContent = `Green: ` + e.target.value;
     });
 });
 
 blueBackground.addEventListener(`mousedown`, (e) => {
+    blueBackground.addEventListener(`mouseup`, () => {
+        blueBackgroundValue.textContent = `Blue: ` + e.target.value;
+    });
     blueBackground.addEventListener(`mousemove`, () => {
         blueBackgroundValue.textContent = `Blue: ` + e.target.value;
     });
 });
 
 alphaBackground.addEventListener(`mousedown`, (e) => {
+    alphaBackground.addEventListener(`mouseup`, () => {
+        alphaBackgroundValue.textContent = `Alpha: ` + e.target.value;
+    });
     alphaBackground.addEventListener(`mousemove`, () => {
         alphaBackgroundValue.textContent = `Alpha: ` + e.target.value;
     });
