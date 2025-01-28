@@ -15,38 +15,42 @@
 
     <div id="window">
         <div id="menu">
-            <!-- <a id="download" href="" download>Download Image (PNG)</a> -->
-            <button id="download" >Download</button>
-            <p>Grid size:</p>
 
-            <div id="sizeSlider">
-                <input id="gridSize" type="range" min="16" max="100" value="16">
-                <div id="gridSizeValue"></div>
+
+            <div id="gridMenu">
+                <p>Grid size:</p>
+
+                <div id="sizeSlider">
+                    <input id="gridSize" type="range" min="16" max="100" value="16">
+                    <div id="gridSizeValue"></div>
+                </div>
             </div>
 
-            <p>Pencil color:</p>
+            <div id="pencilMenu">
+                <p>Pencil color:</p>
 
-            <div id="redPencilSlider">
-                <input id="redPencil" type="range" min="0" max="255" value="0">
-                <div id="redPencilValue"></div>
+                <div id="redPencilSlider">
+                    <input id="redPencil" type="range" min="0" max="255" value="0">
+                    <div id="redPencilValue"></div>
+                </div>
+
+                <div id="greenPencilSlider">
+                    <input id="greenPencil" type="range" min="0" max="255" value="0">
+                    <div id="greenPencilValue"></div>
+                </div>
+
+                <div id="bluePencilSlider">
+                    <input id="bluePencil" type="range" min="0" max="255" value="0">
+                    <div id="bluePencilValue"></div>
+                </div>
+
+                <div id="alphaPencilSlider">
+                    <input id="alphaPencil" type="range" min="0" max="1" value="1" step="0.01">
+                    <div id="alphaPencilValue"></div>
+                </div>
             </div>
 
-            <div id="greenPencilSlider">
-                <input id="greenPencil" type="range" min="0" max="255" value="0">
-                <div id="greenPencilValue"></div>
-            </div>
-
-            <div id="bluePencilSlider">
-                <input id="bluePencil" type="range" min="0" max="255" value="0">
-                <div id="bluePencilValue"></div>
-            </div>
-
-            <div id="alphaPencilSlider">
-                <input id="alphaPencil" type="range" min="0" max="1" value="1" step="0.01">
-                <div id="alphaPencilValue"></div>
-            </div>
-
-            <div id="toolsContainer">
+            <div id="toolsMenu">
                 <div id="pencilContainer">
                     <p>Pencil:</p>
                     <input id="pencil" type="radio" name="tools" checked="true">
@@ -61,31 +65,47 @@
                 </div>
             </div>
 
-            <button id="clear">Clear</button>
-
-            <p>Background color:</p>
-
-            <div id="redBackgroundSlider">
-                <input id="redBackground" type="range" min="0" max="255" value="255">
-                <div id="redBackgroundValue"></div>
+            <div id="buttonsMenu">
+                <button id="clear">Clear</button>
+                <!-- <a id="download" href="" download>Download Image (PNG)</a> -->
+                <button id="download">Download</button>
             </div>
 
-            <div id="greenBackgroundSlider">
-                <input id="greenBackground" type="range" min="0" max="255" value="255">
-                <div id="greenBackgroundValue"></div>
+            <div id="backgroundMenu">
+                <p>Background color:</p>
+
+                <div id="redBackgroundSlider">
+                    <input id="redBackground" type="range" min="0" max="255" value="255">
+                    <div id="redBackgroundValue"></div>
+                </div>
+    
+                <div id="greenBackgroundSlider">
+                    <input id="greenBackground" type="range" min="0" max="255" value="255">
+                    <div id="greenBackgroundValue"></div>
+                </div>
+    
+                <div id="blueBackgroundSlider">
+                    <input id="blueBackground" type="range" min="0" max="255" value="255">
+                    <div id="blueBackgroundValue"></div>
+                </div>
+    
+                <div id="alphaBackgroundSlider">
+                    <input id="alphaBackground" type="range" min="0" max="1" value="1" step="0.01">
+                    <div id="alphaBackgroundValue"></div>
+                </div>
             </div>
 
-            <div id="blueBackgroundSlider">
-                <input id="blueBackground" type="range" min="0" max="255" value="255">
-                <div id="blueBackgroundValue"></div>
-            </div>
 
-            <div id="alphaBackgroundSlider">
-                <input id="alphaBackground" type="range" min="0" max="1" value="1" step="0.01">
-                <div id="alphaBackgroundValue"></div>
-            </div>
 
-            
+
+
+
+
+
+
+
+
+
 
         </div>
 
