@@ -50,9 +50,10 @@ redPencilValue.textContent = `Red: ` + 0;
 greenPencilValue.textContent = `Green: ` + 0;
 bluePencilValue.textContent = `Blue: ` + 0;
 alphaPencilValue.textContent = `Alpha: ` + 1;
-redBackgroundValue.textContent = `Red: ` + 255;
-greenBackgroundValue.textContent = `Green: ` + 255;
-blueBackgroundValue.textContent = `Blue: ` + 255;
+
+redBackgroundValue.textContent = `Red: ` + 0;
+greenBackgroundValue.textContent = `Green: ` + 0;
+blueBackgroundValue.textContent = `Blue: ` + 0;
 alphaBackgroundValue.textContent = `Alpha: ` + 1;
 
 function clearGrid() {
@@ -99,12 +100,12 @@ function downloadGridImage() {
     let imageContext = imageCanvas.getContext(`2d`);
     let colorDraw;
 
-    backgroundCanvas.width = parseInt(currentSize + 1);
-    backgroundCanvas.height = parseInt(currentSize + 1);
-    drawingCanvas.width = parseInt(currentSize + 1);
-    drawingCanvas.height = parseInt(currentSize + 1);
-    imageCanvas.width = parseInt(currentSize + 1);
-    imageCanvas.height = parseInt(currentSize + 1);
+    backgroundCanvas.width = parseInt(currentSize);
+    backgroundCanvas.height = parseInt(currentSize);
+    drawingCanvas.width = parseInt(currentSize);
+    drawingCanvas.height = parseInt(currentSize);
+    imageCanvas.width = parseInt(currentSize);
+    imageCanvas.height = parseInt(currentSize);
 
     backgroundContext.imageSmoothingEnabled = false;
     drawingContext.imageSmoothingEnabled = false;

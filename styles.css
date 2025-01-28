@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    color: aliceblue;
 }
 
 #window {
@@ -10,6 +14,7 @@ body {
     width: 100vw;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(0, 0, 0);
 }
 
 #window > #menu {
@@ -19,23 +24,33 @@ body {
 }
 
 #gridMenu {
-
+    border: 6px solid white;
+    margin: 12px;
+    padding: 6px;
 }
 
 #pencilMenu {
-
+    border: 6px solid white;
+    margin: 12px;
+    padding: 6px;
 }
 
 #toolsMenu {
-
+    border: 6px solid white;
+    margin: 12px;
+    padding: 6px;
 }
 
 #buttonsMenu {
-
+    border: 6px solid white;
+    margin: 12px;
+    padding: 6px;
 }
 
 #backgroundMenu {
-
+    border: 6px solid white;
+    margin: 12px;
+    padding: 6px;
 }
 
 #grid {
@@ -44,6 +59,8 @@ body {
     margin-right: 5vw;
     height: 80vh;
     width: 80vh;
+    padding: 16px;
+    border: 12px solid white;
 }
 
 #grid > .row {
@@ -57,5 +74,5 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 1px solid black;
+    border: 1px solid white;
 }
