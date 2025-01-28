@@ -99,12 +99,12 @@ function downloadGridImage() {
     let imageContext = imageCanvas.getContext(`2d`);
     let colorDraw;
 
-    backgroundCanvas.width = parseInt(currentSize);
-    backgroundCanvas.height = parseInt(currentSize);
-    drawingCanvas.width = parseInt(currentSize);
-    drawingCanvas.height = parseInt(currentSize);
-    imageCanvas.width = parseInt(currentSize);
-    imageCanvas.height = parseInt(currentSize);
+    backgroundCanvas.width = parseInt(currentSize + 1);
+    backgroundCanvas.height = parseInt(currentSize + 1);
+    drawingCanvas.width = parseInt(currentSize + 1);
+    drawingCanvas.height = parseInt(currentSize + 1);
+    imageCanvas.width = parseInt(currentSize + 1);
+    imageCanvas.height = parseInt(currentSize + 1);
 
     backgroundContext.imageSmoothingEnabled = false;
     drawingContext.imageSmoothingEnabled = false;
@@ -128,7 +128,7 @@ function downloadGridImage() {
 
     imageContext.drawImage(backgroundCanvas, 0, 0);
     imageContext.drawImage(drawingCanvas, 0, 0);
-    
+    imageContext.scale(100, 100);
 
     const png = imageCanvas.toDataURL(`image/png`);
     downloadLink.href = png;
