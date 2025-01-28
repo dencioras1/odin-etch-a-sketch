@@ -18,6 +18,26 @@ body {
     margin-left: 5vw;
 }
 
+#gridMenu {
+
+}
+
+#pencilMenu {
+
+}
+
+#toolsMenu {
+
+}
+
+#buttonsMenu {
+
+}
+
+#backgroundMenu {
+
+}
+
 #grid {
     display: flex;
     flex-direction: column;
